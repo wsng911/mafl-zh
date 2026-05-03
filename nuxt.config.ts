@@ -137,7 +137,7 @@ export default defineNuxtConfig({
     ],
     strategy: 'no_prefix',
     langDir: 'locales',
-    defaultLocale: 'en',
+    defaultLocale: 'zh',
   },
   tailwindcss: {
     cssPath: '~/assets/style/tailwind.css',

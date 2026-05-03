@@ -1,34 +1,26 @@
-ARG NODE=node:20.18.1-alpine
+ARG NODE=node:20-alpine
 
-FROM $NODE as build
+FROM $NODE AS build
 
 WORKDIR /app
 
-COPY package.json /app
-COPY yarn.lock /app
+COPY package.json yarn.lock ./
 
-RUN yarn install
+RUN yarn config set registry https://registry.npmmirror.com && \
+    yarn install --frozen-lockfile
 
-COPY . /app
+COPY . .
 
 RUN yarn run build
 
 FROM $NODE
 
-LABEL org.opencontainers.image.title="Mafl" \
-      org.opencontainers.image.description="Minimalistic flexible homepage" \
-      org.opencontainers.image.url="https://mafl.hywax.space" \
-      org.opencontainers.image.documentation="https://mafl.hywax.space/guide/getting-started.html" \
-      org.opencontainers.image.source="https://github.com/hywax/mafl" \
-      org.opencontainers.image.authors="Hywax <me@hywax.space>" \
-      org.opencontainers.image.licenses="MIT"
-
 WORKDIR /app
 
-COPY --from=build /app/.output /app
-COPY --from=build /app/extra/healthcheck.mjs /app/extra/healthcheck.mjs
+COPY --from=build /app/.output ./
+COPY --from=build /app/extra/healthcheck.mjs ./extra/healthcheck.mjs
 
-EXPOSE 3000/tcp
+EXPOSE 3000
 
 HEALTHCHECK --interval=10s --timeout=5s --start-period=10s CMD ["node", "/app/extra/healthcheck.mjs"]
 
