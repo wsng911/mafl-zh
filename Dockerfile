@@ -20,6 +20,7 @@ WORKDIR /app
 COPY --from=build /app/.output ./
 COPY --from=build /app/extra/healthcheck.mjs ./extra/healthcheck.mjs
 
+ENV TZ=Asia/Shanghai
 EXPOSE 3000
 
 HEALTHCHECK --interval=10s --timeout=5s --start-period=10s CMD ["node", "/app/extra/healthcheck.mjs"]
