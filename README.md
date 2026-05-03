@@ -1,6 +1,4 @@
-# Mafl 汉化版
-
-> 基于 [hywax/mafl](https://github.com/hywax/mafl) 的汉化版本，简洁灵活的自托管主页仪表盘。
+# Mafl
 
 ## 功能特性
 
@@ -22,9 +20,3 @@ docker run -d \
 ```
 
 访问 `http://localhost:3000`
-
-## 国内适配
-
-- yarn 镜像：npmmirror.com
-- 默认语言：中文
-
