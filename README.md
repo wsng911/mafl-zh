@@ -28,6 +28,3 @@ docker run -d \
 - yarn 镜像：npmmirror.com
 - 默认语言：中文
 
-## 原项目
-
-https://github.com/hywax/mafl
