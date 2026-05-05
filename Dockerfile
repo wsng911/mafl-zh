@@ -6,7 +6,7 @@ WORKDIR /app
 
 COPY package.json yarn.lock ./
 
-RUN yarn config set registry https://registry.npmmirror.com && \
+RUN yarn config set registry https://registry.npmjs.org && \
     yarn install --frozen-lockfile
 
 COPY . .
