@@ -1,0 +1,16 @@
+title: 我的主页
+services:
+  常用服务:
+    - title: GitHub
+      description: 代码托管平台
+      link: 'https://github.com'
+      icon:
+        name: simple-icons:github
+        wrap: true
+    - title: Docker Hub
+      description: 容器镜像仓库
+      link: 'https://hub.docker.com'
+      icon:
+        name: simple-icons:docker
+        wrap: true
+        color: '#2496ed'
